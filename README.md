@@ -1,76 +1,50 @@
-# Car GPS Tracker UI
+# React + TypeScript + Vite
 
-## Overview
-Car GPS Tracker UI is a front-end application designed to provide real-time vehicle tracking, location history, and an intuitive dashboard for monitoring GPS data. This project is built using **TypeScript (TSX)** with modern web technologies for an optimized user experience.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Features
-- 🚗 **Real-time GPS tracking**
-- 📍 **Location history display**
-- 📊 **Interactive and user-friendly UI**
-- ⚡ **Optimized performance and responsive design**
-- 🔧 **Easily customizable and extendable**
+Currently, two official plugins are available:
 
-## Tech Stack
-- **React (TSX)** – Front-end framework
-- **Vite** – Fast build tool for development
-- **Tailwind CSS** – Styling and UI components
-- **React Query / Axios** – API data fetching
-- **ESLint & Prettier** – Code linting and formatting
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Installation & Setup
-Ensure you have **Node.js** installed on your system.
+## Expanding the ESLint configuration
 
-### 1️⃣ Clone the repository:
-```sh
-git clone https://github.com/uktamkomiljonov/Car-GPS-Tracker-UI.git
-cd Car-GPS-Tracker-UI
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+
+- Configure the top-level `parserOptions` property like this:
+
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-### 2️⃣ Install dependencies:
-```sh
-npm install
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
+
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
 ```
-
-### 3️⃣ Start the development server:
-```sh
-npm run dev
-```
-
-### 4️⃣ Build for production:
-```sh
-npm run build
-```
-
-## Folder Structure
-```
-Car-GPS-Tracker-UI/
-│-- public/             # Static assets
-│-- src/                # Main source code
-│   ├── components/     # Reusable UI components
-│   ├── pages/          # Page views
-│   ├── hooks/          # Custom hooks
-│   ├── utils/          # Helper functions
-│   ├── assets/         # Static assets (images, icons, etc.)
-│   ├── App.tsx         # Root component
-│   ├── main.tsx        # Application entry point
-│-- .gitignore          # Git ignore file
-│-- eslint.config.js    # ESLint configuration
-│-- vite.config.ts      # Vite configuration file
-│-- tsconfig.json       # TypeScript configuration
-│-- tsconfig.app.json   # TypeScript app-specific configuration
-│-- tsconfig.node.json  # TypeScript node-specific configuration
-│-- package.json        # Project dependencies
-│-- package-lock.json   # Lock file for dependencies
-│-- yarn.lock           # Yarn lock file
-│-- README.md           # Project documentation
-```
-
-## Contributing
-Contributions are welcome! Feel free to fork the repository and submit a pull request.
-
-
----
-**📌 Notes:**
-- Ensure you configure API endpoints before running the project.
-- PRs should follow best coding practices and be well-documented.
-- Feedback and suggestions are always appreciated! 🚀
